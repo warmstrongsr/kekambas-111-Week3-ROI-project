@@ -1,14 +1,18 @@
 class PropertyROI:
-    # __init__
+   
+    # __init__ Includes monthly income set to 0 and expenses dictionary with expense values set to 0
     def __init__(self):
         self.monthly_income = 0
         self.expenses = {
         'water':0,'HOA':0, 'lawn':0, 'vacancy':0, 'repairs':0, 'CapEx':0, 'property_management':0,'mortgage':0, 'misc_fees':0 } 
-    # funtion to get all input *get_information*
+    
+    # function to get all input *get_information*
     def get_information(self):
         self.monthly_income = float(input("Enter monthly income: "))
+        # Foor loop to get all input *get_expenses*
         for expense in self.expenses:
             self.expenses[expense] = float(input(f"Enter {expense} expense: $"))
+        # Expenses and total investment inputs and summations    
         self.expenses['taxes'] = float(input("Enter tax expense total: $"))
         self.expenses['insurance'] = float(input("Enter insurance expense total: $"))
         self.expenses['misc_fees'] = (float(input("Enter potential fees total: $")))
@@ -28,7 +32,6 @@ class PropertyROI:
         print(roi)
         return roi
         
-        
     # "reciept" summation function
     def generate_receipt(self, roi):
         print("==== RENTAL PROPERTY RECEIPT ====")
@@ -44,9 +47,13 @@ class PropertyROI:
         print("**********************************")
         print("\n==== RENTAL PROPERTY RECEIPT ====")
 
+# Make the calculator object from the PropertyROI class
 calculator = PropertyROI()
+# Call the get_information function
 calculator.get_information()
+# Make the roi calculation 
 roi = calculator.calculate_roi()
+# Call the generate_receipt function
 calculator.generate_receipt(roi)
 
 
